@@ -10,19 +10,5 @@ public class LoginController {
     public String index(){
         return "index";
     }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home";  // Página após login bem-sucedido
-    }
-
-    @GetMapping(value = "/logout")
-    public String logout(){
-        return "index";
-    }
 }
+
