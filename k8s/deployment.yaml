@@ -6,7 +6,7 @@ metadata:
   name: hello
   namespace: hello
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: hello
