@@ -6,11 +6,9 @@ metadata:
   name: hello
   namespace: hello
 spec:
+  type: LoadBalancer
   ports:
-    - port: 8080
-      protocol: TCP
+    - port: 80
       targetPort: 8080
   selector:
     app: hello
-status:
-  loadBalancer: {}
