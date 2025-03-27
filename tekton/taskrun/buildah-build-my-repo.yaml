@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1
+kind: TaskRun
+metadata:
+  name: buildah-build-my-repo
+spec:
+  taskRef:
+    resolver: cluster
+    params:
+      - name: kind
+        value: task
+      - name: name
+        value: buildah
+      - name: namespace
+        value: openshift-pipelines
+  params:
+    - name: IMAGE
+      value: docker.io/marcelobruckner/hello:latest # Nome e tag da imagem
+    - name: repo-url
+      value: https://github.com/marcelobruckner/hello-app # URL do repositório Git
+  workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: hello-pvc
+  serviceAccountName: build-bot
