@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: clone-read-run-
+  generateName: hello-pipeline-run-
 spec:
   pipelineRef:
-    name: clone-read
+    name: hello-pipeline
   params:
     - name: repo-url
       value: "https://github.com/marcelobruckner/hello-app"

@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Task
 metadata:
   name: kustomize-update-manifest
+  namespace: hello # Certifique-se de usar o namespace correto
   labels:
     app.kubernetes.io/version: "1.0"
   annotations:

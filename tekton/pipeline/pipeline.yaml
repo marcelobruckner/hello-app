@@ -1,7 +1,8 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: clone-read
+  name: hello-pipeline
+  namespace: hello # Certifique-se de usar o namespace correto
 spec:
   description: A pipeline that clones a git repository and reads README files.
   params:
