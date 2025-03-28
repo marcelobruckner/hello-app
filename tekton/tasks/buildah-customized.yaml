@@ -112,9 +112,9 @@ spec:
         # shellcheck disable=SC2046,SC2086
 
         # Construir a imagem com a tag principal (ex: latest)
-        buildah ${CERT_DIR_FLAG} "--storage-driver=${PARAM_STORAGE_DRIVER}" bud "${BUILD_ARGS[@]}" ${PARAM_BUILD_EXTRA_ARGS} \
+        buildah ${CERT_DIR_FLAG} "--storage-driver=${PARAM_STORAGE_DRIVER}" bud --isolation=rootless "${BUILD_ARGS[@]}" ${PARAM_BUILD_EXTRA_ARGS} \
           "--format=${PARAM_FORMAT}" "--tls-verify=${PARAM_TLSVERIFY}" \
-          -f "${PARAM_DOCKERFILE}" -t "${PARAM_IMAGE}" "${PARAM_CONTEXT}"
+          -f "${PARAM_DOCKERFILE}" -t "${PARAM_IMAGE}" "${PARAM_CONTEXT}" 
 
         [ "${PARAM_SKIP_PUSH}" = "true" ] && echo "Push skipped" && exit 0
 
