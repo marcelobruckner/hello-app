@@ -6,6 +6,9 @@ metadata:
   app.kubernetes.io/instance: hello
   name: hello
   namespace: hello
+  annotations:
+    app.kubernetes.io/instance: hello
+
 spec:
   port:
     targetPort: 8080
