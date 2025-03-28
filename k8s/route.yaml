@@ -1,14 +1,8 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  labels:
-    app: hello
-  app.kubernetes.io/instance: hello
   name: hello
   namespace: hello
-  annotations:
-    app.kubernetes.io/instance: hello
-
 spec:
   port:
     targetPort: 8080
