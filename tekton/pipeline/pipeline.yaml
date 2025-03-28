@@ -13,7 +13,7 @@ spec:
     - name: image
       type: string
       description: The image name to build.
-      default: "marcelobruckner/hello"
+      default: "docker.io/marcelobruckner/hello"
     - name: dockerfile
       type: string
       description: The path to the Dockerfile.

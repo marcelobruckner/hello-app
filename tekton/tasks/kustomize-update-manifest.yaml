@@ -28,6 +28,9 @@ spec:
     - name: update-kustomize
       image: registry.k8s.io/kustomize/kustomize:v5.0.0
       workingDir: $(workspaces.source.path)/$(params.KUSTOMIZE_PATH)
+      securityContext:
+        runAsUser: 1000
+        runAsNonRoot: true
       env:
         - name: DOCKER_CONFIG
           value: "/tekton/home/.docker"

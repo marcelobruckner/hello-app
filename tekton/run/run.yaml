@@ -4,7 +4,7 @@ metadata:
   generateName: hello-pipeline-run-
 spec:
   pipelineRef:
-    name: hello-pipeline
+    name: hello
   params:
     - name: repo-url
       value: "https://github.com/marcelobruckner/hello-app"
