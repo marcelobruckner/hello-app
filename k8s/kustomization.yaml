@@ -8,6 +8,6 @@ resources:
 namespace: hello
 
 images:
-  - name: marcelobruckner/hello
-    newName: marcelobruckner/hello
+  - name: default-route-openshift-image-registry.apps-crc.testing/hello/hello
+    newName: default-route-openshift-image-registry.apps-crc.testing/hello/hello
     newTag: ef6364d794dc31db102d4f6ebb93e6b79b8111ff0ae877f05c01f34e67a613b1
