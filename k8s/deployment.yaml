@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hello
-          image: marcelobruckner/hello
+          image: default-route-openshift-image-registry.apps-crc.testing/hello/hello
           ports:
             - name: http
               containerPort: 8080

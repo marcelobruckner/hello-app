@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Task
 metadata:
   name: git-commit-manifest
-  namespace: hello
+  # namespace: hello
 spec:
   description: >
     Comita e envia para o GitHub as alterações feitas nos manifestos Kubernetes.

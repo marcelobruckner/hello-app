@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Task
 metadata:
   name: adjust-sha-image-generated
-  namespace: hello # Certifique-se de usar o namespace correto
+  # namespace: hello # Certifique-se de usar o namespace correto
   labels:
     app.kubernetes.io/version: "0.9"
 spec:

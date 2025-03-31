@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: hello-pipeline
-  namespace: hello # Certifique-se de usar o namespace correto
+  # namespace: hello # Certifique-se de usar o namespace correto
 spec:
   description: A pipeline that clones a git repository and reads README files.
   params:
@@ -13,7 +13,8 @@ spec:
     - name: image
       type: string
       description: The image name to build.
-      default: "docker.io/marcelobruckner/hello"
+      # default: "docker.io/marcelobruckner/hello"
+      default: "image-registry.openshift-image-registry.svc:5000/hello/hello"
     - name: dockerfile
       type: string
       description: The path to the Dockerfile.
@@ -27,6 +28,7 @@ spec:
       description: |
         This workspace contains the cloned repo files, so they can be read by the
         next task.
+
   tasks:
     # Clones the git repository into the shared workspace.
     - name: fetch-source
@@ -45,63 +47,6 @@ spec:
       params:
         - name: URL
           value: $(params.repo-url)
-
-    # Builds the image using Buildah.
-    # - name: build-image
-    #   runAfter:
-    #     - fetch-source
-    #   taskRef:
-    #     resolver: cluster
-    #     params:
-    #       - name: kind
-    #         value: task
-    #       - name: name
-    #         value: buildah
-    #       - name: namespace
-    #         value: openshift-pipelines
-    #   workspaces:
-    #     - name: source
-    #       workspace: shared-data
-    #   params:
-    #     - name: repo-url
-    #       value: "$(params.repo-url)"
-    #     - name: IMAGE
-    #       value: "$(params.image)"
-
-    # Ajustando o SHA da imagem
-    # - name: adjust-sha-image-generated
-    #   runAfter:
-    #     - build-image
-    #   taskRef:
-    #     name: adjust-sha-image-generated
-    #   workspaces:
-    #     - name: source
-    #       workspace: shared-data
-    #   params:
-    #     - name: IMAGE_DIGEST
-    #       value: "$(tasks.build-image.results.IMAGE_DIGEST)"
-
-    # Builds the image using Buildah SHA.
-    # - name: build-image-sha
-    #   runAfter:
-    #     - adjust-sha-image-generated
-    #   taskRef:
-    #     resolver: cluster
-    #     params:
-    #       - name: kind
-    #         value: task
-    #       - name: name
-    #         value: buildah
-    #       - name: namespace
-    #         value: openshift-pipelines
-    #   workspaces:
-    #     - name: source
-    #       workspace: shared-data
-    #   params:
-    #     - name: repo-url
-    #       value: "$(params.repo-url)"
-    #     - name: IMAGE
-    #       value: "$(params.image):$(tasks.adjust-sha-image-generated.results.DIGEST)"
 
     # Builds the image using Buildah.
     - name: build-image
@@ -147,7 +92,3 @@ spec:
           value: $(params.repo-url)
         - name: GIT_BRANCH
           value: "main"
-        # - name: GIT_USER_NAME
-        #   value: "marcelobruckner"
-        # - name: GIT_USER_EMAIL
-        #   value: "marcelobruckner@gmail.com"
