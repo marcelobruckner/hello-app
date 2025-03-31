@@ -1,16 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: hello
   name: hello
   namespace: hello
+  labels:
+    app: hello
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: hello
-  strategy: {}
   template:
     metadata:
       labels:
@@ -20,4 +19,6 @@ spec:
         - name: hello
           image: marcelobruckner/hello
           ports:
-            - containerPort: 8080
+            - name: http
+              containerPort: 8080
+              protocol: TCP
