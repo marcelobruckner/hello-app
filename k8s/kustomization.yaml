@@ -1,13 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - service.yaml
-  - deployment.yaml
-  - route.yaml
+- service.yaml
+- deployment.yaml
+- route.yaml
 
 namespace: hello
 
 images:
-  - name: marcelobruckner/hello
-    newName: marcelobruckner/hello
-    newTag: ef6364d794dc31db102d4f6ebb93e6b79b8111ff0ae877f05c01f34e67a613b1
+- name: marcelobruckner/hello
+  newName: marcelobruckner/hello
+  newTag: de30e19d0f257389e5d7249a65708fb66132708d2252a3ee2fdc217fd12e3ae1
