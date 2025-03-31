@@ -4,11 +4,10 @@ metadata:
   name: hello
   namespace: hello
 spec:
-  port:
-    targetPort: 8080
   to:
     kind: Service
     name: hello
+  port:
+    targetPort: 8080
   tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+    termination: edge # Remova esta seção se não quiser HTTPS
