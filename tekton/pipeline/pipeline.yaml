@@ -14,7 +14,7 @@ spec:
       type: string
       description: The image name to build.
       # default: "docker.io/marcelobruckner/hello"
-      default: "image-registry.openshift-image-registry.svc:5000/hello/hello"
+      default: "default-route-openshift-image-registry.apps-crc.testing/hello/hello"
     - name: dockerfile
       type: string
       description: The path to the Dockerfile.

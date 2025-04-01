@@ -46,8 +46,7 @@ spec:
         cat kustomization.yaml  # Verifica se o arquivo realmente está no local correto
 
         echo "🔄 Atualizando imagem no Kustomize..."
-        # kustomize edit set image marcelobruckner/hello=marcelobruckner/hello:$(params.IMAGE)
-        kustomize edit set image $(params.IMAGE)=$(params.IMAGE:$(params.DIGEST)
+        kustomize edit set image $(params.IMAGE)=$(params.IMAGE):$(params.DIGEST)
 
         echo "✅ Kustomization atualizado com sucesso!"
 
