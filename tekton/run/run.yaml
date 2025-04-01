@@ -5,15 +5,7 @@ metadata:
 spec:
   pipelineRef:
     name: hello-pipeline
-  params:
-    - name: repo-url
-      value: "https://github.com/marcelobruckner/hello-app"
-    - name: image
-      # value: "marcelobruckner/hello"
-      value: "image-registry.openshift-image-registry.svc:5000/hello/hello"
-  # podTemplate:
-  #   securityContext:
-  #     fsGroup: 65532
+
   workspaces:
     - name: shared-data
       persistentVolumeClaim:
