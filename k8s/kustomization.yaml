@@ -1,13 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - service.yaml
-  - deployment.yaml
-  - route.yaml
+- service.yaml
+- deployment.yaml
+- route.yaml
 
 namespace: hello
 
 images:
-  - name: default-route-openshift-image-registry.apps-crc.testing/hello/hello
-    newName: default-route-openshift-image-registry.apps-crc.testing/hello/hello
-    newTag: 2c92e259fdb1ce3441e39687839cfd8b4840d85bad7133377e04d3b0617f6a79
+- name: default-route-openshift-image-registry.apps-crc.testing/hello/hello
+  newName: default-route-openshift-image-registry.apps-crc.testing/hello/hello
+  newTag: 2c92e259fdb1ce3441e39687839cfd8b4840d85bad7133377e04d3b0617f6a79
+- name: image-registry.openshift-image-registry.svc:5000/hello/hello
+  newName: image-registry.openshift-image-registry.svc:5000/hello/hello
+  newTag: a111a1923fb1bf68670ec71e7cb53f7f492bd3740d4b5b16fa06c140454e6f01
