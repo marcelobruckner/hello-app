@@ -13,4 +13,4 @@ images:
   newTag: 526e5b6b62559ed6ee5a3dc64528e482f3026e24a5c3b08125278938ad192f23
 - name: image-registry.openshift-image-registry.svc:5000/hello/hello
   newName: image-registry.openshift-image-registry.svc:5000/hello/hello
-  newTag: 4d5bf71522b1d4a649edf4f30ea3e25c1aabe5c173db8421a06581368d6b6aa4
+  newTag: 2c92e259fdb1ce3441e39687839cfd8b4840d85bad7133377e04d3b0617f6a79
