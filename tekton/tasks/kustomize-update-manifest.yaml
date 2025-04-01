@@ -14,8 +14,10 @@ spec:
     Atualiza manifestos Kubernetes com Kustomize, alterando a imagem para um novo SHA ou tag.
 
   params:
+    - name: DIGEST
+      description: "SHA da imagem a ser atualizada no Kustomize (ex: sha256:abcd123)"
     - name: IMAGE
-      description: "Imagem a ser atualizada no Kustomize (ex: my-app:latest ou my-app@sha256:abcd123)"
+      description: "aqui entra o registry. ex: docker.io/marcelobruckner/hello"
     - name: KUSTOMIZE_PATH
       description: "Caminho onde está o kustomization.yaml"
       default: "."
@@ -44,7 +46,8 @@ spec:
         cat kustomization.yaml  # Verifica se o arquivo realmente está no local correto
 
         echo "🔄 Atualizando imagem no Kustomize..."
-        kustomize edit set image marcelobruckner/hello=marcelobruckner/hello:$(params.IMAGE)
+        # kustomize edit set image marcelobruckner/hello=marcelobruckner/hello:$(params.IMAGE)
+        kustomize edit set image $(params.IMAGE)=$(params.IMAGE:$(params.DIGEST)
 
         echo "✅ Kustomization atualizado com sucesso!"
 

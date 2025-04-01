@@ -74,6 +74,8 @@ spec:
           workspace: shared-data
       params:
         - name: IMAGE
+          value: "$(params.image)"
+        - name: DIGEST
           value: "$(tasks.build-image.results.DIGEST)"
         - name: KUSTOMIZE_PATH
           value: "k8s/"

@@ -11,11 +11,11 @@ spec:
     - name: image
       # value: "marcelobruckner/hello"
       value: "image-registry.openshift-image-registry.svc:5000/hello/hello"
-  podTemplate:
-    securityContext:
-      fsGroup: 65532
+  # podTemplate:
+  #   securityContext:
+  #     fsGroup: 65532
   workspaces:
     - name: shared-data
       persistentVolumeClaim:
         claimName: hello-pvc
-  serviceAccountName: build-bot
+  # serviceAccountName: build-bot
