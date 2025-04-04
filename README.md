@@ -24,3 +24,5 @@ kustomize-update-manifest
 
 Houve erro de permissao para commitar no github
 Vou criar o secret e associar ao sa pipeline
+
+Pequeno ajuste para verificar se inicia a pipeline
