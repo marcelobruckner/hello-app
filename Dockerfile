@@ -1,4 +1,5 @@
-FROM maven:3.8.5-eclipse-temurin-17-alpine AS build
+#FROM maven:3.8.5-eclipse-temurin-17-alpine AS build
+FROM registry.access.redhat.com/ubi8/openjdk-17:1.21-1.1744797574 AS build
 WORKDIR /app
 
 # Copy dependencies first for better layer caching
@@ -9,7 +10,8 @@ RUN mvn dependency:go-offline
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jre-alpine
+#FROM eclipse-temurin:17-jre-alpine
+FROM registry.access.redhat.com/ubi8/openjdk-17:1.21-1.1744797574 AS run
 
 # Add metadata labels
 LABEL maintainer="marcelobruckner" \
@@ -18,14 +20,11 @@ LABEL maintainer="marcelobruckner" \
 
 WORKDIR /app
 
-# Create non-root user for security (Alpine uses addgroup/adduser)
-RUN addgroup -S appuser && adduser -S appuser -G appuser
-
-# Copy jar with proper ownership
-COPY --from=build --chown=appuser:appuser /app/target/hello-0.0.1-SNAPSHOT.jar app.jar
+# Copy jar built in the previous stage
+COPY --from=build /app/target/hello-0.0.1-SNAPSHOT.jar app.jar
 
 # Switch to non-root user
-USER appuser
+USER jboss
 
 EXPOSE 8080
 
